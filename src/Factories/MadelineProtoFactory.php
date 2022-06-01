@@ -70,10 +70,6 @@ class MadelineProtoFactory
             $config = config('telegram.settings');
         }
 
-        if (!empty($config['logger']['logger_param'])) {
-            $config['logger']['logger_param'] = fn () => $config['logger']['logger_param'];
-        }
-
         $client = new API(storage_path("app/telegram/$sessionFile"), $config);
 
         return new MadelineProto($client);
