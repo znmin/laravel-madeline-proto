@@ -2,19 +2,19 @@
 
 namespace Hu\MadelineProto;
 
-use danog\MadelineProto\Namespace\Messages;
+use danog\MadelineProto\Namespace\AbstractAPI;
 
 class ClientMessages
 {
     /**
-     * @var messages
+     * @var AbstractAPI
      */
     private $messages;
 
     /**
      * ClientMessage constructor.
      *
-     * @param messages $messages
+     * @param AbstractAPI $messages
      */
     public function __construct($messages)
     {
@@ -518,12 +518,23 @@ class ClientMessages
         return new TelegramObject($this->messages->getHistory($payload));
     }
 
+    public function forwardMessages($params): TelegramObject
+    {
+        if ($params instanceof TelegramObject) {
+            $payload = $params->toArray();
+        } else {
+            $payload = $params;
+        }
+
+        return new TelegramObject($this->messages->sendMessage($payload));
+    }
+
     /**
      * Get Client messages instance.
      *
-     * @return messages messages APIFactory.
+     * @return AbstractAPI messages APIFactory.
      */
-    public function getMessages(): messages
+    public function getMessages(): AbstractAPI
     {
         return $this->messages;
     }
