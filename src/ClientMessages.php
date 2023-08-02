@@ -2,7 +2,7 @@
 
 namespace Hu\MadelineProto;
 
-use danog\MadelineProto\messages;
+use danog\MadelineProto\Namespace\Messages;
 
 class ClientMessages
 {

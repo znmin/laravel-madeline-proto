@@ -21,6 +21,7 @@
         "illuminate/console": "^8.0|^9.0",
         "illuminate/database": "^8.0|^9.0"
     },
+    "minimum-stability": "beta",
     "autoload": {
         "psr-4": {
             "Hu\\MadelineProto\\": "src/"
@@ -31,9 +32,17 @@
             "providers": [
                 "Hu\\MadelineProto\\MadelineProtoServiceProvider"
             ]
+        },
+        "phabel": {
+            "revision": 0
         }
     },
     "require-dev": {
         "phabel/phabel": "^1.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "phabel/phabel": true
+        }
     }
 }
